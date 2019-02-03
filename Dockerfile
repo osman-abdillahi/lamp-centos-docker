@@ -1,22 +1,14 @@
-FROM centos:6.7
+FROM 78392/osman-repo:centos6.5
 
-# Install php 5.6. Need to add EPEL and Remi repository
-RUN wget http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-RUN wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-RUN rpm -Uvh epel-release-6-8.noarch.rpm remi-release-6.rpm
+# Install Apache 2.4 and PHP 5.6
+RUN cd /etc/yum.repos.d/ && wget http://repos.fedorapeople.org/repos/jkaluza/httpd24/epel-httpd24.repo
+RUN yum update && yum -y install httpd24.x86_64 \
+	php56w 
 
-RUN yum install php php-mysql
+# Export Apache 2.4 sbin directory to path
+RUN export PATH="$PATH:/opt/rh/httpd24/root/usr/sbin"
 
-# Install Apache
-#RUN yum install httpd
-
-# Install MySQL server
-#RUN yum install mysql-server
-
-# Remove php.info file and set Apache and MySQL to start on boot
-#RUN rm /var/www/html/info.php
-#RUN chkconfig httpd on
-#RUN chkconfig mysqld on
-
-# Expose Apache, SSH, and MySQL ports
-#EXPOSE 22 25 80 443 3306
+# Ports exposed for Apache
+EXPOSE 80,443
+ 
+CMD service httpd24-httpd start
