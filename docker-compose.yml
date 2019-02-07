@@ -12,9 +12,9 @@ services:
       - mysql
     volumes: 
       - /opt/luffy/web:/var/www/html
-      - /opt/luffy/php/php.ini:/usr/local/etc/php/php.ini
-      - /opt/luffy/sites-enabled}:/etc/apache2/sites-enabled
-      - /opt/luffy/logs/apache2}:/var/log/apache2
+      - /opt/luffy/php/php.ini:/etc/php.ini
+      - /opt/luffy/sites-enabled:/etc/apache2/sites-enabled
+      - /opt/luffy/logs/apache2:/var/log/apache2
   mysql:
     image: mysql-server:5.7.25
     container_name: 'zoro-mysql'
@@ -22,8 +22,8 @@ services:
     ports:
       - "3306:3306"
     volumes: 
-      - /opt/luffy/data/mysql}:/var/lib/mysql
-      -/opt/luffy/logs/mysql}:/var/log/mysql
+      - /opt/luffy/data/mysql:/var/lib/mysql
+      - /opt/luffy/logs/mysql:/var/log/mysql
     environment:
       MYSQL_DATABASE: brook
       MYSQL_USER: chopper
