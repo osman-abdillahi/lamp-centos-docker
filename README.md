@@ -9,7 +9,6 @@ Lamp-Centos-Docker is a dockerized lamp stack running on Centos : 6.5
 - Git
 - PHP 5.6
 - Apache 2.3
-- MySQL 5.6
 - CentOS 6.5
 
 
@@ -18,6 +17,5 @@ Lamp-Centos-Docker is a dockerized lamp stack running on Centos : 6.5
 Run the commands below to build and run the lamp CentOS container.
 
 
-    docker build -t lamp-app .
-    docker run -rm --name running-lamp-app lamp-app
-
+    docker build -t lamp-app:latest .
+    docker run -it -p 8001:80 78392/centos-php-apache:cap-latest
