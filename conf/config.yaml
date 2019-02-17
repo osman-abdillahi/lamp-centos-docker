@@ -1,0 +1,13 @@
+## global definitions
+nodes:
+  web1:
+    name: 'Web_1'
+    conf_volume: "/opt/web1/conf/"
+    site_volume: "/opt/web1/site/"
+    port: 8001
+
+  web2:
+    name: 'Web_2'
+    conf_volume: "/opt/web2/conf/"
+    site_volume: "/opt/web2/site/"
+    port: 8002
