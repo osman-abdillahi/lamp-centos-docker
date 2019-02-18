@@ -27,7 +27,7 @@ function stop_docker_container() {
 }
 
 # Parse config file
-eval $(parse_yaml config.yaml)
+eval $(parse_yaml ../conf/config.yaml)
 
 stop_docker_container "$nodes_web1_name"
 
